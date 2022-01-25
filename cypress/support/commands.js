@@ -1,3 +1,5 @@
+import ProductsPage from '../integration/pageObjects/ProductsPage';
+
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
@@ -25,11 +27,11 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 Cypress.Commands.add('selectProduct', (productName) => {
-    cy.get('app-card-list')
-        .find('h4.card-title')
-        .each((column, index) => {
-            if (column.text().includes(productName)) {
-                cy.get('.btn.btn-info').eq(index).click();
-            }
-        });
+    const { getCardTitlesList, getAddButton } = new ProductsPage();
+
+    getCardTitlesList().each((column, index) => {
+        if (column.text().includes(productName)) {
+            getAddButton().eq(index).click();
+        }
+    });
 });

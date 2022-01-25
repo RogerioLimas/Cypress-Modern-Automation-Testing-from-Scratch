@@ -1,7 +1,15 @@
 /// <reference types="Cypress" />
 
+import HomePage from './pageObjects/HomePage';
+
 describe('My Second Test Suite', () => {
     let name, gender;
+    const {
+        getNameField,
+        getSecondNameField,
+        getGenderSelect,
+        getEntrepreneur,
+    } = new HomePage();
 
     before(() => {
         cy.fixture('example').then((data) => {
@@ -9,27 +17,20 @@ describe('My Second Test Suite', () => {
             gender = data.gender;
         });
     });
-    beforeEach(() => console.log('Before Each'));
-    after(() => console.log('After'));
-    afterEach(() => console.log('After Each'));
 
     it('My First Test Case', () => {
         cy.visit('https://rahulshettyacademy.com/angularpractice/');
 
         // Validate the name entered
-        cy.get('div.form-group > input[name="name"]')
-            .type(name)
-            .should('have.value', name);
-        cy.get('h4 input[name="name"]').should('have.value', name);
+        getNameField().type(name).should('have.value', name);
+        getSecondNameField().should('have.value', name);
 
         // Validate the required 2 characteres length minimum
-        cy.get('div.form-group > input[name="name"]').should('have.attr', 'minlength', '2')
+        getNameField().should('have.attr', 'minlength', '2');
 
-        cy.get('#exampleFormControlSelect1')
-            .select(gender)
-            .should('have.value', gender);
+        getGenderSelect().select(gender).should('have.value', gender);
 
         // Verify if "Entrepreneur" is disabled
-        cy.get('#inlineRadio3').should('be.disabled')
+        getEntrepreneur().should('be.disabled');
     });
 });
