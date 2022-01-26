@@ -1,8 +1,8 @@
 /// <reference types="Cypress" />
 
-import HomePage from './pageObjects/HomePage';
+import HomePage from '../support/pageObjects/HomePage';
 
-describe('My Second Test Suite', () => {
+describe('My Eighth Test Suite', () => {
     let name, gender;
     const {
         getNameField,
@@ -18,7 +18,7 @@ describe('My Second Test Suite', () => {
         });
     });
 
-    it('My First Test Case', () => {
+    it('My Eighth Test Case', () => {
         cy.visit('https://rahulshettyacademy.com/angularpractice/');
 
         // Validate the name entered

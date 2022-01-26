@@ -1,5 +1,9 @@
 {
-    "video": false,
-    "viewportHeight": 1000,
-    "defaultCommandTimeout": 10000
+  "video": false,
+  "viewportHeight": 1000,
+  "defaultCommandTimeout": 10000,
+  "env": {
+    "url": "https://rahulshettyacademy.com/angularpractice/shop"
+  },
+  "projectId": "kgjha4"
 }

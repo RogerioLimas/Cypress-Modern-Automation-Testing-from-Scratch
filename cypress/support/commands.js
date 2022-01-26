@@ -1,4 +1,4 @@
-import ProductsPage from '../integration/pageObjects/ProductsPage';
+import ProductsPage from '../support/pageObjects/ProductsPage';
 
 // ***********************************************
 // This example commands.js shows you how to

@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 
-describe('My Second Test Suite', () => {
-    it('My Second Test Case', () => {
+describe('My Third Test Suite', () => {
+    it('My Third Test Case', () => {
         cy.visit('https://rahulshettyacademy.com/AutomationPractice/');
 
         // // Checkboxes
@@ -29,7 +29,7 @@ describe('My Second Test Suite', () => {
         //             menuItem.click();
         //         }
         //     })
-        
+
         // cy.get('#autocomplete').should('have.value', 'India')
 
         // (In)Visible

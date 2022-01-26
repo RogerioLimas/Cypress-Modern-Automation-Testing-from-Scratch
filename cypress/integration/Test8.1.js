@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-import ProductsPage from './pageObjects/ProductsPage';
+import ProductsPage from '../support/pageObjects/ProductsPage';
 
 describe('Customized functions', () => {
     let data;
@@ -16,7 +16,7 @@ describe('Customized functions', () => {
     });
 
     it('Add to cart', () => {
-        cy.visit('https://rahulshettyacademy.com/angularpractice/shop');
+        cy.visit(Cypress.env('url'));
 
         data.productName.forEach((product) => cy.selectProduct(product));
     });

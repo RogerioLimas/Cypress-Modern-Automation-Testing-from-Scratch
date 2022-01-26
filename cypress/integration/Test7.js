@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 
-describe('My Second Test Suite', () => {
-    it('My Second Test Case', () => {
+describe('My Seventh Test Suite', () => {
+    it('My Seventh Test Case', () => {
         cy.visit('https://rahulshettyacademy.com/AutomationPractice/');
 
         cy.get('#opentab').then(element => {
