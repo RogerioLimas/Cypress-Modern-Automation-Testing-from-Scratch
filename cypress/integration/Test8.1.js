@@ -22,9 +22,11 @@ describe('Customized functions', () => {
     });
 
     it('Check the cart', () => {
-        
+
         getCartButton().click();
 
+        checkTotalCartPrice()
+        return
         getCheckoutButton().click();
 
         getCountrySelect().type('ind');
@@ -34,5 +36,7 @@ describe('Customized functions', () => {
         })
         
         cy.contains('input', 'Purchase').click()
+
+        cy.get('.alert.alert-success.alert-dismissible').should('include.text', 'Thank you! Your order will be delivered in next few weeks :-)');
     });
 });

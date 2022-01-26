@@ -10,36 +10,23 @@ class ProductsPage {
 
     getCountrySelect = () => cy.get('#country');
 
-    #getPrice = (row) => {
-        let result = {};
-
-        const priceObjects = row.find('td.col-sm-1.col-md-1.text-center');
-        if (priceObjects.length === 2) {
-            result.productPrice = priceObjects[0].textContent.replace(
-                /[^0-9]/,
-                ''
-            );
-            result.totalPrice = priceObjects[0].textContent.replace(
-                /[^0-9]/,
-                ''
-            );
-        }
-
-        return result;
-    };
-
     checkTotalCartPrice = () => {
-        let totalPrice;
+        let summedPrice = 0;
+        let totalPrice = 0;
 
-        const table = cy.get('.table.table-hover tr');
-
-        table.each((row, index) => {
-            const prices = this.#getPrice(row);
-            if (prices?.productPrice) {
-                totalPrice = prices;
-            }
-        });
-        return totalPrice;
+        cy.get('tr td:nth-child(4) strong')
+            .each((element) => {
+                summedPrice += parseInt(element.text().replace(/[^0-9]/g, ''));
+            })
+            .then(() => {
+                cy.get('h3 > strong')
+                    .then((element) => {
+                        totalPrice = parseInt(
+                            element.text().replace(/[^0-9]/g, '')
+                        );
+                    })
+                    .then(() => expect(totalPrice).to.equal(summedPrice));
+            });
     };
 }
 
