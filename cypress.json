@@ -2,6 +2,7 @@
   "video": false,
   "viewportHeight": 1000,
   "defaultCommandTimeout": 10000,
+  "testFiles": "**/*.feature",
   "env": {
     "url": "https://rahulshettyacademy.com/angularpractice/shop"
   },
