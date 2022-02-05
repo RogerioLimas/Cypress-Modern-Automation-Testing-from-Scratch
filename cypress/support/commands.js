@@ -35,3 +35,41 @@ Cypress.Commands.add('selectProduct', (productName) => {
         }
     });
 });
+
+/*
+ * Returns fake data and status code from a given URI/URL
+ * jsonFilePath: File path from the fixture folder. Ex: data/mockData.json
+ * requestMethod: GET/POST/PUT/PATCH/DELETE
+ * requestURL: /test.json
+ * responseStatusCode: 200, 404, 500, etc
+ * variableName - variable that will be used by the cy.wait() function
+ */
+Cypress.Commands.add('loadMockDataFromFile', (jsonFilePath, requestMethod, requestURL, responseStatusCode, variableName) => {
+    cy.intercept({
+        method: requestMethod,
+        url: requestURL
+    },
+    {
+        statusCode: responseStatusCode ?? 200,
+        fixture: jsonFilePath
+    }).as(variableName);
+});
+
+/*
+ * Returns fake data and status code from a given URI/URL
+ * jsonObject: JSON object to be retrieved. Ex: {"name": "Rogerio Limas"}
+ * requestMethod: GET/POST/PUT/PATCH/DELETE
+ * requestURL: /test.json
+ * responseStatusCode: 200, 404, 500, etc
+ * variableName - variable that will be used by the cy.wait() function
+ */
+Cypress.Commands.add('loadMockDataFromObject', (jsonObject, requestMethod, requestURL, responseStatusCode, variableName) => {
+    cy.intercept({
+        method: requestMethod,
+        url: requestURL
+    },
+    {
+        statusCode: responseStatusCode ?? 200,
+        body: jsonObject
+    }).as(variableName);
+});
